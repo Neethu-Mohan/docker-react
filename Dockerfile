@@ -2,8 +2,8 @@ FROM node:11-alpine as builder
 WORKDIR /app
 COPY package.json .
 RUN npm install
-COPY . .
+COPY . . 
 RUN npm run build
-
+#nginx
 FROM nginx
 COPY --from=builder /app/build /usr/share/nginx/html
